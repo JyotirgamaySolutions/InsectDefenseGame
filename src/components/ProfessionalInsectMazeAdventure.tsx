@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog"
-import { Trophy, VolumeX, Volume2, Play, Info } from 'lucide-react'
+import { Trophy, VolumeX, Volume2, Play, Info, LogOut } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { StaticImageData } from 'next/image'
 import confetti from 'canvas-confetti'
@@ -174,14 +174,12 @@ export default function ProfessionalInsectMazeAdventure() {
   const [gameOver, setGameOver] = useState(false)
   const [message, setMessage] = useState('')
   const [selectedAnswer, setSelectedAnswer] = useState('')
-  const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
   const [language, setLanguage] = useState<Language>('english')
   const [showLanguageSelection, setShowLanguageSelection] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [showExitConfirmation, setShowExitConfirmation] = useState(false)
   const [isMoving, setIsMoving] = useState(false)
   const [showFrontPage, setShowFrontPage] = useState(true)
-  const [showFacts, setShowFacts] = useState(false)
   const [showGameRules, setShowGameRules] = useState(false)
   const [showAnswerPopup, setShowAnswerPopup] = useState(false)
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false)
@@ -215,7 +213,6 @@ export default function ProfessionalInsectMazeAdventure() {
     setGameOver(false)
     setMessage('')
     setSelectedAnswer('')
-    setShowCorrectAnswer(false)
     if (frontPageAudioRef.current) {
       frontPageAudioRef.current.pause()
       frontPageAudioRef.current.currentTime = 0
@@ -232,7 +229,6 @@ export default function ProfessionalInsectMazeAdventure() {
     if (isCorrect) {
       setScore(prevScore => prevScore + 50)
       setMessage(language === 'english' ? 'Correct! +50 points' : 'बरोबर! +५० गुण')
-      setShowCorrectAnswer(true)
       if (correctAnswerAudioRef.current) correctAnswerAudioRef.current.play().catch(error => console.error("Correct answer audio playback failed:", error))
       confetti({
         particleCount: 100,
@@ -242,7 +238,6 @@ export default function ProfessionalInsectMazeAdventure() {
     } else {
       setScore(prevScore => Math.max(0, prevScore - 20))
       setMessage(language === 'english' ? 'Incorrect. -20 points.' : 'चूक. -२० गुण.')
-      setShowCorrectAnswer(false)
       if (incorrectAnswerAudioRef.current) incorrectAnswerAudioRef.current.play().catch(error => console.error("Incorrect answer audio playback failed:", error))
     }
     setShowAnswerPopup(true)
@@ -253,7 +248,6 @@ export default function ProfessionalInsectMazeAdventure() {
     setShowAnswerPopup(false)
     setMessage('')
     setSelectedAnswer('')
-    setShowCorrectAnswer(false)
     setIsMoving(true)
     setCurrentPosition(prevPosition => {
       if (prevPosition === insects[language].length - 1) {
@@ -263,7 +257,6 @@ export default function ProfessionalInsectMazeAdventure() {
           particleCount: 100,
           spread: 70,
           origin: { y: 0.6 }
-        
         })
         return prevPosition
       }
@@ -279,7 +272,8 @@ export default function ProfessionalInsectMazeAdventure() {
       const timer = setTimeout(() => {
         setShowQuiz(true)
         setIsMoving(false)
-      }, 3000)
+      }, 
+      3000)
 
       return () => clearTimeout(timer)
     }
@@ -316,6 +310,12 @@ export default function ProfessionalInsectMazeAdventure() {
     if (index !== currentPosition) {
       setShowLostProgressMessage(true)
     }
+  }
+
+  const handleQuit = () => {
+    // Placeholder for quit functionality
+    console.log("Quit button clicked")
+    // You can add the redirection logic here later
   }
 
   return (
@@ -363,6 +363,12 @@ export default function ProfessionalInsectMazeAdventure() {
               >
                 {isMuted ? <VolumeX className="mr-2 h-6 w-6" /> : <Volume2 className="mr-2 h-6 w-6" />}
                 {isMuted ? "Unmute" : "Mute"}
+              </Button>
+              <Button
+                onClick={handleQuit}
+                className="w-64 h-16 text-xl rounded-full bg-red-600 text-white hover:bg-red-700 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
+              >
+                <LogOut className="mr-2 h-6 w-6" /> Quit
               </Button>
             </div>
           </div>
