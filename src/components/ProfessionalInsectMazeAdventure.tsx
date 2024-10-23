@@ -1,3 +1,4 @@
+
 'use client'
 
 import React, { useState, useEffect, useCallback, useRef } from 'react'
@@ -312,11 +313,16 @@ export default function ProfessionalInsectMazeAdventure() {
     }
   }
 
-  const handleQuit = () => {
-    // Placeholder for quit functionality
-    console.log("Quit button clicked")
-    // You can add the redirection logic here later
-  }
+  // const handleQuit = () => {
+  //   // Placeholder for quit functionality
+  //   console.log("Quit button clicked")
+  //   // You can add the redirection logic here later
+  // }
+
+const handleQuit = () => {
+  window.location.href = "https://rrbcea.vercel.app";
+};
+
 
   return (
     <div className="min-h-screen w-full flex flex-col" style={{ fontFamily: "'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif" }}>
@@ -364,12 +370,19 @@ export default function ProfessionalInsectMazeAdventure() {
                 {isMuted ? <VolumeX className="mr-2 h-6 w-6" /> : <Volume2 className="mr-2 h-6 w-6" />}
                 {isMuted ? "Unmute" : "Mute"}
               </Button>
-              <Button
+{/*               <Button
                 onClick={handleQuit}
                 className="w-64 h-16 text-xl rounded-full bg-red-600 text-white hover:bg-red-700 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
               >
                 <LogOut className="mr-2 h-6 w-6" /> Quit
-              </Button>
+              </Button> */}
+
+<Button
+      onClick={handleQuit}
+      className="w-64 h-16 text-xl rounded-full bg-red-600 text-white hover:bg-red-700 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
+    >
+      <LogOut className="mr-2 h-6 w-6" /> Quit
+    </Button>
             </div>
           </div>
         </div>
