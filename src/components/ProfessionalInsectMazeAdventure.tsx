@@ -365,7 +365,7 @@ const handleQuit = () => {
               </Button>
               <Button
                 onClick={toggleMute}
-                className="w-64 h-16 text-xl rounded-full bg-green-700 text-white hover:bg-green-400 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
+                className="w-64 h-16 text-xl rounded-full bg-green-700 text-white hover:bg-green-600 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
               >
                 {isMuted ? <VolumeX className="mr-2 h-6 w-6" /> : <Volume2 className="mr-2 h-6 w-6" />}
                 {isMuted ? "Unmute" : "Mute"}
@@ -379,7 +379,7 @@ const handleQuit = () => {
 
 <Button
       onClick={handleQuit}
-      className="w-64 h-16 text-xl rounded-full bg-red-600 text-white hover:bg-red-700 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
+      className="w-64 h-16 text-xl rounded-full bg-red-600 text-white hover:bg-red-400 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
     >
       <LogOut className="mr-2 h-6 w-6" /> Quit
     </Button>
@@ -511,7 +511,7 @@ const handleQuit = () => {
       </Dialog>
 
       <Dialog open={showRules} onOpenChange={setShowRules}>
-        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-500 text-white border border-green-200 rounded-lg">
+        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-700 text-white border border-green-200 rounded-lg">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
               {language === 'english' ? 'Game Rules' : 'खेळाचे नियम'}
