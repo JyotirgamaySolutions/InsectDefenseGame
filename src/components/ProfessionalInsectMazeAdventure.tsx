@@ -1,4 +1,3 @@
-
 'use client'
 
 import React, { useState, useEffect, useCallback, useRef } from 'react'
@@ -270,7 +269,8 @@ export default function ProfessionalInsectMazeAdventure() {
 
   useEffect(() => {
     if (gameStarted && currentPosition < insects[language].length) {
-      const timer = setTimeout(() => {
+      const timer = setTimeout(() => 
+      {
         setShowQuiz(true)
         setIsMoving(false)
       }, 
@@ -313,16 +313,11 @@ export default function ProfessionalInsectMazeAdventure() {
     }
   }
 
-  // const handleQuit = () => {
-  //   // Placeholder for quit functionality
-  //   console.log("Quit button clicked")
-  //   // You can add the redirection logic here later
-  // }
-
-const handleQuit = () => {
-  window.location.href = "https://rrbcea.vercel.app";
-};
-
+  const handleQuit = () => {
+    // Placeholder for quit functionality
+    console.log("Quit button clicked")
+    // You can add the redirection logic here later
+  }
 
   return (
     <div className="min-h-screen w-full flex flex-col" style={{ fontFamily: "'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif" }}>
@@ -352,13 +347,13 @@ const handleQuit = () => {
             </div>
             <div className="flex flex-col items-center space-y-6">
               <Button
-                className="w-64 h-16 text-xl rounded-full bg-green-700 text-white hover:bg-green-400 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
+                className="w-64 h-16 text-xl rounded-full bg-green-700 text-white hover:bg-green-600 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
                 onClick={handleStart}
               >
                 <Play className="mr-2 h-6 w-6" /> Start Adventure
               </Button>
               <Button
-                className="w-64 h-16 text-xl rounded-full bg-teal-500 text-white hover:bg-green-400 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
+                className="w-64 h-16 text-xl rounded-full bg-teal-500 text-white hover:bg-teal-400 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
                 onClick={handleShowGameRules}
               >
                 <Info className="mr-2 h-6 w-6" /> Game Rules
@@ -370,19 +365,12 @@ const handleQuit = () => {
                 {isMuted ? <VolumeX className="mr-2 h-6 w-6" /> : <Volume2 className="mr-2 h-6 w-6" />}
                 {isMuted ? "Unmute" : "Mute"}
               </Button>
-{/*               <Button
+              <Button
                 onClick={handleQuit}
                 className="w-64 h-16 text-xl rounded-full bg-red-600 text-white hover:bg-red-700 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
               >
                 <LogOut className="mr-2 h-6 w-6" /> Quit
-              </Button> */}
-
-<Button
-      onClick={handleQuit}
-      className="w-64 h-16 text-xl rounded-full bg-red-600 text-white hover:bg-red-400 hover:scale-105 shadow-lg transition duration-300 ease-in-out"
-    >
-      <LogOut className="mr-2 h-6 w-6" /> Quit
-    </Button>
+              </Button>
             </div>
           </div>
         </div>
@@ -511,7 +499,7 @@ const handleQuit = () => {
       </Dialog>
 
       <Dialog open={showRules} onOpenChange={setShowRules}>
-        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-700 text-white border border-green-200 rounded-lg">
+        <DialogContent className="sm:max-w-[425px] bg-green-600 text-white border border-green-500 rounded-lg">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
               {language === 'english' ? 'Game Rules' : 'खेळाचे नियम'}
@@ -530,7 +518,7 @@ const handleQuit = () => {
                 </motion.p>
                 <motion.ul className="list-disc pl-6 space-y-2">
                   <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.5 }}>
-                    Navigate through the maze and encounter various insects.
+                  The bird will navigate through the maze and encounter various insects.
                   </motion.li>
                   <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6, duration: 0.5 }}>
                     For each insect, choose the correct defense mechanism.
@@ -578,7 +566,7 @@ const handleQuit = () => {
             )}
           </motion.div>
           <DialogFooter>
-            <Button onClick={handleStartGame} className="w-full bg-green-600 hover:bg-green-700 text-white text-lg font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out">
+            <Button onClick={handleStartGame} className="w-full bg-green-700 hover:bg-green-800 text-white text-lg font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out">
               {language === 'english' ? 'Start' : 'खेळ सुरू करा'}
             </Button>
           </DialogFooter>
@@ -759,11 +747,11 @@ const handleQuit = () => {
       </Dialog>
 
       <Dialog open={showGameRules} onOpenChange={setShowGameRules}>
-        <DialogContent className="max-w-[80vw] max-h-[80vh] bg-gradient-to-r from-green-300 to-green-500 text-white border border-green-300 rounded-3xl p-8 shadow-xl overflow-auto">
+        <DialogContent className="max-w-[80vw] max-h-[80vh] bg-green-600 text-white border border-green-400 rounded-3xl p-8 shadow-xl overflow-auto">
           <DialogHeader>
             <div className="flex items-center justify-center">
               <DialogTitle
-                className="text-4xl md:text-7xl font-extrabold text-center"
+                className="text-4xl md:text-7xl font-extrabold text-center text-white"
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 {language === 'english' ? 'Game Rules' : 'खेळाचे नियम'}
@@ -774,27 +762,27 @@ const handleQuit = () => {
           <div className="mt-8 space-y-6 text-lg md:text-2xl leading-relaxed" style={{ fontFamily: 'Georgia, serif' }}>
             {language === 'english' ? (
               <>
-                <p className="text-2xl md:text-3xl font-bold">Welcome to the Insect Defense Maze Adventure!</p>
-                <ul className="list-disc pl-10 space-y-4">
+                <p className="text-2xl md:text-3xl font-bold text-white">Welcome to the Insect Defense Maze Adventure!</p>
+                <ul className="list-disc pl-10 space-y-4 text-white">
                   <li>Navigate through the maze and encounter various insects.</li>
                   <li>For each insect, choose the correct defense mechanism.</li>
                   <li>Correct answer: +50 points</li>
                   <li>Incorrect answer: -20 points</li>
                   <li>Learn about different insect defense strategies.</li>
                 </ul>
-                <p className="text-2xl md:text-3xl font-bold">Good luck and enjoy your learning experience!</p>
+                <p className="text-2xl md:text-3xl font-bold text-white">Good luck and enjoy your learning experience!</p>
               </>
             ) : (
               <>
-                <p className="text-2xl md:text-3xl font-bold">कीटक संरक्षण चक्रव्यूह साहसात आपले स्वागत आहे!</p>
-                <ul className="list-disc pl-10 space-y-4">
+                <p className="text-2xl md:text-3xl font-bold text-white">कीटक संरक्षण चक्रव्यूह साहसात आपले स्वागत आहे!</p>
+                <ul className="list-disc pl-10 space-y-4 text-white">
                   <li>चक्रव्यूहातून मार्ग काढा आणि विविध कीटकांना भेटा.</li>
                   <li>प्रत्येक कीटकासाठी योग्य संरक्षण यंत्रणा निवडा.</li>
                   <li>बरोबर उत्तर: +५० गुण</li>
                   <li>चुकीचे उत्तर: -२० गुण</li>
                   <li>विविध कीटक संरक्षण धोरणांबद्दल जाणून घ्या.</li>
                 </ul>
-                <p className="text-2xl md:text-3xl font-bold">शुभेच्छा आणि आपला शिक्षण अनुभव आनंददायी होवो!</p>
+                <p className="text-2xl md:text-3xl font-bold text-white">शुभेच्छा आणि आपला शिक्षण अनुभव आनंददायी होवो!</p>
               </>
             )}
           </div>
@@ -802,7 +790,7 @@ const handleQuit = () => {
           <DialogFooter className="mt-8 flex justify-center">
             <Button
               onClick={handleCloseGameRules}
-              className="w-full max-w-sm bg-green-600 hover:bg-green-700 text-white text-lg font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out"
+              className="w-full max-w-sm bg-green-700 hover:bg-green-800 text-white text-lg font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out"
               style={{ fontFamily: 'Verdana, sans-serif' }}
             >
               {language === 'english' ? 'Back' : 'मागे'}
