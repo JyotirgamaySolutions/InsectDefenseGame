@@ -313,11 +313,10 @@ export default function ProfessionalInsectMazeAdventure() {
     }
   }
 
-  const handleQuit = () => {
-    // Placeholder for quit functionality
-    console.log("Quit button clicked")
-    // You can add the redirection logic here later
-  }
+ const handleQuit = () => {
+    console.log("Quit button clicked");
+    window.location.href = "https://rrbcea.vercel.app"; // Redirects to the desired link
+  };
 
   return (
     <div className="min-h-screen w-full flex flex-col" style={{ fontFamily: "'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif" }}>
