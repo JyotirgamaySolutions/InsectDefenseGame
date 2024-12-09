@@ -127,7 +127,7 @@ const insects: InsectData = {
       name: "घातक किडा",
       defense: "विष",
       options: ["विष", "रासायनिक", "पाय त्यागणे"],
-      fact: "घातक किडे दोन वेगळ्या ग्रंथींमध्ये आक्रमक आणि संरक्षणात्मक विष तयार करतात, हे एक उत्क्रांतीशील अनुकूलन आहे जे इतर कोणत्याही विषारी प्राण्यासाठी वर्णन केलेले नाही.",
+      fact: "घातक किडे दोन वेगळ्या ग्रंथींमध्ये आक्रमक आणि संरक्षणात्मक विष तयार करतात, हे एक उत्क्रांतीशील अनुकूलन आहे जे इतर कोणत्याह  विषारी प्राण्यासाठी वर्णन केलेले नाही.",
       image: AssassinBugImage,
     },
     {
@@ -233,7 +233,7 @@ export default function ProfessionalInsectMazeAdventure() {
       confetti({
         particleCount: 100,
         spread: 70,
-        origin: { y: 0.6 }
+        origin: { y: 0.8}
       })
     } else {
       setScore(prevScore => Math.max(0, prevScore - 20))
@@ -241,6 +241,7 @@ export default function ProfessionalInsectMazeAdventure() {
       if (incorrectAnswerAudioRef.current) incorrectAnswerAudioRef.current.play().catch(error => console.error("Incorrect answer audio playback failed:", error))
     }
     setShowAnswerPopup(true)
+    setShowQuiz(false)
   }, [currentPosition, language])
 
   const handleNextQuestion = useCallback(() => {
@@ -313,7 +314,7 @@ export default function ProfessionalInsectMazeAdventure() {
     }
   }
 
- const handleQuit = () => {
+  const handleQuit = () => {
     console.log("Quit button clicked");
     window.location.href = "https://rrbcea.vercel.app"; // Redirects to the desired link
   };
@@ -475,9 +476,9 @@ export default function ProfessionalInsectMazeAdventure() {
       )}
 
       <Dialog open={showLanguageSelection} onOpenChange={setShowLanguageSelection}>
-        <DialogContent className="sm:max-w-[600px] bg-gradient-to-r from-green-300 to-green-500 text-Black rounded-3xl shadow-lg p-6">
+        <DialogContent className="sm:max-w-[600px] bg-gradient-to-r from-green-300 to-green-500 text-gray-800 rounded-3xl shadow-lg p-6">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-white">Select Language / भाषा निवडा  🌎
+            <DialogTitle className="text-2xl font-bold text-gray-800">Select Language / भाषा निवडा  🌎
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
@@ -561,8 +562,8 @@ export default function ProfessionalInsectMazeAdventure() {
                 <motion.p initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.4, duration: 0.5 }}>
                   शुभेच्छा आणि आपला शिक्षण अनुभव आनंददायी होवो!
                 </motion.p>
-              </>
-            )}
+              </>)}
+          
           </motion.div>
           <DialogFooter>
             <Button onClick={handleStartGame} className="w-full bg-green-700 hover:bg-green-800 text-white text-lg font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out">
@@ -573,9 +574,9 @@ export default function ProfessionalInsectMazeAdventure() {
       </Dialog>
 
       <AnimatePresence>
-        {showQuiz && (
+        {showQuiz && !showAnswerPopup && (
           <Dialog open={showQuiz} onOpenChange={setShowQuiz}>
-            <DialogContent className="sm:max-w-[90vw] sm:max-h-[90vh] overflow-y-auto bg-gradient-to-r from-green-300 to-green-500 text-white border border-green-200 rounded-lg p-0">
+            <DialogContent className="sm:max-w-[90vw] sm:max-h-[90vh] overflow-y-auto bg-gradient-to-r from-green-300 to-green-500 text-gray-800 border border-green-200 rounded-lg p-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -584,8 +585,8 @@ export default function ProfessionalInsectMazeAdventure() {
                 className="p-6"
               >
                 <DialogHeader>
-                  <DialogTitle className="text-3xl font-bold mb-4">{insects[language][currentPosition].name}</DialogTitle>
-                  <DialogDescription className="text-xl mb-6 text-white">
+                  <DialogTitle className="text-3xl font-bold mb-4 text-gray-800">{insects[language][currentPosition].name}</DialogTitle>
+                  <DialogDescription className="text-xl mb-6 text-gray-800">
                     {language === 'english' ? 'Select the correct defense mechanism:' : 'योग्य संरक्षण यंत्रणा निवडा:'}
                   </DialogDescription>
                 </DialogHeader>
@@ -638,7 +639,7 @@ export default function ProfessionalInsectMazeAdventure() {
       <AnimatePresence>
         {showAnswerPopup && (
           <Dialog open={showAnswerPopup} onOpenChange={setShowAnswerPopup}>
-            <DialogContent className="sm:max-w-[90vw] sm:max-h-[90vh] overflow-y-auto bg-gradient-to-r from-green-300 to-green-500 text-white border border-green-200 rounded-lg p-0">
+            <DialogContent className="sm:max-w-[90vw] sm:max-h-[90vh] overflow-y-auto bg-gradient-to-r from-green-300 to-green-500 text-gray-800 border border-green-200 rounded-lg p-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -647,7 +648,7 @@ export default function ProfessionalInsectMazeAdventure() {
                 className="p-6"
               >
                 <DialogHeader>
-                  <DialogTitle className={`text-3xl font-bold mb-4 ${isAnswerCorrect ? 'text-green-100' : 'text-red-500'}`}>
+                  <DialogTitle className={`text-3xl font-bold mb-4 ${isAnswerCorrect ? 'text-green-800' : 'text-red-800'}`}>
                     {isAnswerCorrect
                       ? (language === 'english' ? 'Correct!' : 'बरोबर!')
                       : (language === 'english' ? 'Incorrect' : 'चूक')}
@@ -656,7 +657,7 @@ export default function ProfessionalInsectMazeAdventure() {
                 <div className="space-y-4">
                   {isAnswerCorrect ? (
                     <>
-                      <p className="text-xl">{message}</p>
+                      <p className="text-xl text-gray-800">{message}</p>
                       <div className="bg-green-100 p-4 rounded-lg text-green-800">
                         <p className="text-lg font-semibold mb-2">{language === 'english' ? 'Fact:' : 'माहिती:'}</p>
                         <p>{insects[language][currentPosition].fact}</p>
@@ -664,8 +665,8 @@ export default function ProfessionalInsectMazeAdventure() {
                     </>
                   ) : (
                     <>
-                      <p className="text-xl">{message}</p>
-                      <p className="text-lg">
+                      <p className="text-xl text-gray-800">{message}</p>
+                      <p className="text-lg text-gray-800">
                         {language === 'english' ? 'The correct answer is:' : 'बरोबर उत्तर आहे:'}
                         <span className="font-bold"> {insects[language][currentPosition].defense}</span>
                       </p>
@@ -691,7 +692,7 @@ export default function ProfessionalInsectMazeAdventure() {
       </AnimatePresence>
 
       <Dialog open={gameOver} onOpenChange={setGameOver}>
-        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-500 text-white border border-green-200 rounded-lg">
+        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-500 text-gray-800 border border-green-200 rounded-lg">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold flex items-center">
               {language === 'english' ? 'Game Over!' : 'खेळ संपला!'} <Trophy className="ml-2 text-yellow-500" />
@@ -723,7 +724,7 @@ export default function ProfessionalInsectMazeAdventure() {
       </Dialog>
 
       <Dialog open={showExitConfirmation} onOpenChange={setShowExitConfirmation}>
-        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-500 text-white border border-green-200 rounded-lg">
+        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-500 text-gray-800 border border-green-200 rounded-lg">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
               {language === 'english' ? 'Exit Game?' : 'खेळातून बाहेर पडायचे?'}
@@ -799,9 +800,9 @@ export default function ProfessionalInsectMazeAdventure() {
       </Dialog>
 
       <Dialog open={showLostProgressMessage} onOpenChange={setShowLostProgressMessage}>
-        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-500 text-white border border-green-200 rounded-lg">
+        <DialogContent className="sm:max-w-[425px] bg-gradient-to-r from-green-300 to-green-500 text-gray-800 border border-green-200 rounded-lg">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-red-100">
+            <DialogTitle className="text-2xl font-bold text-red-800">
               {language === 'english' ? 'Progress Lost' : 'प्रगती गमावली'}
             </DialogTitle>
           </DialogHeader>
@@ -832,3 +833,4 @@ export default function ProfessionalInsectMazeAdventure() {
     </div>
   )
 }
+
