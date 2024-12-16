@@ -21,6 +21,8 @@ import StinkbugImage from '../Images/stinkbug.jpg'
 import FrontPageImage from '../Images/FrontPage.png'
 import BirdImage from '../Images/Bird.jpg'
 
+
+
 type Language = 'english' | 'marathi';
 
 interface Insect {
@@ -34,7 +36,7 @@ interface Insect {
 type InsectData = {
   [key in Language]: Insect[];
 };
-
+// Array to select Langauges and insect data
 const insects: InsectData = {
   english: [
     {
@@ -94,6 +96,8 @@ const insects: InsectData = {
       image: HornetImage,
     }
   ],
+
+//  Array for marathi Language
   marathi: [
     {
       name: "पतंग (ओलिएंडर हॉक पतंग)",
@@ -154,6 +158,7 @@ const insects: InsectData = {
   ]
 };
 
+// Maze Design 
 const mazePositions = [
   { top: '85%', left: '10%' },
   { top: '70%', left: '25%' },
@@ -164,7 +169,7 @@ const mazePositions = [
   { top: '55%', left: '75%' },
   { top: '70%', left: '90%' },
 ];
-
+//  Functions
 export default function ProfessionalInsectMazeAdventure() {
   const [gameStarted, setGameStarted] = useState(false)
   const [showRules, setShowRules] = useState(false)
@@ -319,6 +324,7 @@ export default function ProfessionalInsectMazeAdventure() {
     window.location.href = "https://rrbcea.vercel.app"; // Redirects to the desired link
   };
 
+//  Game UI CSS
   return (
     <div className="min-h-screen w-full flex flex-col" style={{ fontFamily: "'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif" }}>
       {showFrontPage ? (
@@ -497,7 +503,7 @@ export default function ProfessionalInsectMazeAdventure() {
           </div>
         </DialogContent>
       </Dialog>
-
+{/*  Game Rules Dailog Box*/}
       <Dialog open={showRules} onOpenChange={setShowRules}>
         <DialogContent className="sm:max-w-[425px] bg-green-600 text-white border border-green-500 rounded-lg">
           <DialogHeader>
@@ -745,7 +751,7 @@ export default function ProfessionalInsectMazeAdventure() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
+{/* Game Rules in Marathi */}
       <Dialog open={showGameRules} onOpenChange={setShowGameRules}>
         <DialogContent className="max-w-[80vw] max-h-[80vh] bg-green-600 text-white border border-green-400 rounded-3xl p-8 shadow-xl overflow-auto">
           <DialogHeader>
