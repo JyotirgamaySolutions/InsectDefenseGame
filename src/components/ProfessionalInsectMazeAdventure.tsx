@@ -319,10 +319,15 @@ export default function ProfessionalInsectMazeAdventure() {
     }
   }
 
+  // const handleQuit = () => {
+  //   console.log("Quit button clicked");
+  //   window.location.href = "https://rrbcea.vercel.app"; // Redirects to the desired link
+  // };
+
   const handleQuit = () => {
     console.log("Quit button clicked");
-    window.location.href = "https://rrbcea.vercel.app"; // Redirects to the desired link
-  };
+    window.location.href = "http://games.rrbcea.org"; // Redirects to the new link
+};
 
 //  Game UI CSS
   return (
